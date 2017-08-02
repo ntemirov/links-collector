@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksCollector.Web", "LinksCollector.Web\LinksCollector.Web.csproj", "{EE8C347D-41A0-4CC6-8B5F-6EABB9D94DBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinksCollector.Web", "LinksCollector.Web\LinksCollector.Web.csproj", "{EE8C347D-41A0-4CC6-8B5F-6EABB9D94DBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksCollector.DataAccessLayer", "LinksCollector.DataAccessLayer\LinksCollector.DataAccessLayer.csproj", "{FCDE807E-0C58-429E-8D3A-A2F7DD34D483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinksCollector.DataAccessLayer", "LinksCollector.DataAccessLayer\LinksCollector.DataAccessLayer.csproj", "{FCDE807E-0C58-429E-8D3A-A2F7DD34D483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksCollector.BusinessLogicLayer", "LinksCollector.BusinessLogicLayer\LinksCollector.BusinessLogicLayer.csproj", "{CE689F34-0674-428D-88A9-E7C9B3FF5426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FCDE807E-0C58-429E-8D3A-A2F7DD34D483}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCDE807E-0C58-429E-8D3A-A2F7DD34D483}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCDE807E-0C58-429E-8D3A-A2F7DD34D483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE689F34-0674-428D-88A9-E7C9B3FF5426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE689F34-0674-428D-88A9-E7C9B3FF5426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE689F34-0674-428D-88A9-E7C9B3FF5426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE689F34-0674-428D-88A9-E7C9B3FF5426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
