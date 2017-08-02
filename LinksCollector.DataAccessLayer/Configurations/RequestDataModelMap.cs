@@ -13,14 +13,18 @@ namespace LinksCollector.DataAccessLayer.Configurations
 
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.Url)
-                .HasMaxLength(500)
-                .IsRequired();
-
             builder.Property(p => p.CreatedAt)
                 .IsRequired()
                 .HasDefaultValueSql("GetUtcDate()");
-            builder.Property(p => p.CreatedAt);
+
+            builder.Property(p => p.UpdatedAt);
+
+            builder.Property(p => p.RequestDate)
+                .IsRequired();
+
+            builder.Property(p => p.Url)
+                .HasMaxLength(500)
+                .IsRequired();
 
             builder.Property(p => p.HyperlinksCount)
                 .IsRequired();
