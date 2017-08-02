@@ -10,12 +10,12 @@ namespace LinksCollector.DataAccessLayer.DataModels
         Int64 Id { get; set; }
 
         /// <summary>
-        /// Entity creation date
+        /// Entity creation date and time
         /// </summary>
         DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
-        /// Entity update date
+        /// Entity update date and time
         /// </summary>
         DateTimeOffset? UpdatedAt { get; set; }
     }
