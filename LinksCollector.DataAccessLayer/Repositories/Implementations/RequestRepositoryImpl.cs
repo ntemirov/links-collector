@@ -1,7 +1,7 @@
 ﻿using LinksCollector.DataAccessLayer.DataModels;
 using LinksCollector.DataAccessLayer.EF;
 
-namespace LinksCollector.DataAccessLayer.Repositories.Implementetions
+namespace LinksCollector.DataAccessLayer.Repositories.Implementations
 {
     /// <summary>
     /// Default implementation of <see cref="IRequestRepository"/>

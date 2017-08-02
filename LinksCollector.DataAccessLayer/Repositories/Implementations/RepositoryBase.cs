@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using LinksCollector.DataAccessLayer.EF;
 
-namespace LinksCollector.DataAccessLayer.Repositories.Implementetions
+namespace LinksCollector.DataAccessLayer.Repositories.Implementations
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
