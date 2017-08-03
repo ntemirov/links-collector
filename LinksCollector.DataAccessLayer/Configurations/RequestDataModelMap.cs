@@ -19,14 +19,17 @@ namespace LinksCollector.DataAccessLayer.Configurations
 
             builder.Property(p => p.UpdatedAt);
 
-            builder.Property(p => p.RequestDate)
-                .IsRequired();
-
             builder.Property(p => p.Url)
                 .HasMaxLength(500)
                 .IsRequired();
 
+            builder.Property(p => p.RequestDate)
+                .IsRequired();
+
             builder.Property(p => p.HyperlinksCount)
+                .IsRequired();
+
+            builder.Property(p => p.RequestProcessingTime)
                 .IsRequired();
         }
     }
