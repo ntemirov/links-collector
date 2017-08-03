@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LinksCollector.DataAccessLayer\LinksCollector.DataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>
