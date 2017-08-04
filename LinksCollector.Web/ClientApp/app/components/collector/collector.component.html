@@ -1,0 +1,12 @@
+<h1>Collector</h1>
+
+<form [formGroup]="collector" novalidate>
+    <div class="form-group">
+        <label class="center-block form-inline float-left">Url: 
+            <input class="form-control" formControlName="url">
+        </label> &nbsp;
+        <button type="submit" (click)="search()" [disabled]="!collector.valid" class="btn">
+            Search
+        </button>
+    </div>
+</form>
