@@ -1,3 +1,8 @@
-﻿.float-left {
-    float: left;
+﻿.url {
+    font-size: large;
+}
+
+.validate-danger {
+    color: #ff0000;
+    font-size: small;
 }

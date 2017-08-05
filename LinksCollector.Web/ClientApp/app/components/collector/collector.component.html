@@ -1,12 +1,30 @@
-<h1>Collector</h1>
-
-<form [formGroup]="collector" novalidate>
-    <div class="form-group">
-        <label class="center-block form-inline float-left">Url: 
-            <input class="form-control" formControlName="url">
-        </label> &nbsp;
-        <button type="submit" (click)="search()" [disabled]="!collector.valid" class="btn">
-            Search
-        </button>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Collector</h1>
+        </div>
     </div>
-</form>
+    <div class="row">
+        <div class="col-sm-12">
+            <form [formGroup]="collector" novalidate>
+                <div class="form-group">
+                    <label class="form-inline url">
+                        Url:
+                        <input class="form-control" formControlName="url">
+                    </label> &nbsp;
+                    <button type="submit" (click)="getLinks($event)" [promiseBtn]="getButtonPromice" [disabled]="!collector.valid" class="btn">
+                        Get links
+                    </button>
+                    <div *ngIf="collectorFormErrors.url" class="validate-danger text-left">
+                        {{ collectorFormErrors.url }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+</div>

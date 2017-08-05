@@ -23,7 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\models\link.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LinksCollector.BusinessLogicLayer\LinksCollector.BusinessLogicLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\link.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\links-collector.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
