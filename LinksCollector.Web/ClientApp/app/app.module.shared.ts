@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -33,14 +32,13 @@ const APP_PROVIDERS = [
         HomeComponent
     ],
     imports: [
-        AppRoutingModule,
         CommonModule,
         HttpModule,
         FormsModule,
+        AppRoutingModule,
         ReactiveFormsModule,
         InfiniteScrollModule,
-        Angular2PromiseButtonModule.forRoot(),
-        ToastModule.forRoot()
+        Angular2PromiseButtonModule.forRoot()
     ],
 
     providers: [
