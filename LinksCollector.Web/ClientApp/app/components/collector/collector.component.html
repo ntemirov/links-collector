@@ -23,7 +23,7 @@
 </div>
 <div class="row">
     <div *ngIf="result" class="col-sm-12">
-        <p *ngIf="result.error" class="has-error">result.error</p>
+        <p *ngIf="result.error" class="has-error">{{result.error}}</p>
         <table class='table' *ngIf="result.data">
             <thead>
                 <tr>

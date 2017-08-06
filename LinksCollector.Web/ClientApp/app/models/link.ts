@@ -1,5 +1,6 @@
 ﻿export class Link {
-    public text: string;
-    public url: string;
-    public count: number;
+    public requestId?: number;
+    public text?: string;
+    public url?: string;
+    public count?: number;
 }

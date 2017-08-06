@@ -15,11 +15,9 @@ namespace LinksCollector.DataAccessLayer.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "GetUtcDate()"),
                     HyperlinksCount = table.Column<int>(type: "int", nullable: false),
                     RequestDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    RequestProcessingTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    UpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    RequestProcessingTime = table.Column<double>(type: "float", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>

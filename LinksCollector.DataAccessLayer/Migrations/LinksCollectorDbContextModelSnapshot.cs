@@ -25,17 +25,11 @@ namespace LinksCollector.DataAccessLayer.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("GetUtcDate()");
-
                     b.Property<int>("HyperlinksCount");
 
                     b.Property<DateTimeOffset>("RequestDate");
 
-                    b.Property<TimeSpan>("RequestProcessingTime");
-
-                    b.Property<DateTimeOffset?>("UpdatedAt");
+                    b.Property<double>("RequestProcessingTime");
 
                     b.Property<string>("Url")
                         .IsRequired()

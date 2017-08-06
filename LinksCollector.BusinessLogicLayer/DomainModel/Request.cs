@@ -27,8 +27,8 @@ namespace LinksCollector.BusinessLogicLayer.DomainModel
         public Int32 HyperlinksCount { get; set; }
 
         /// <summary>
-        /// The request processing time
+        /// The request processing time in microseconds
         /// </summary>
-        public TimeSpan RequestProcessingTime { get; set; }
+        public Double RequestProcessingTime { get; set; }
     }
 }

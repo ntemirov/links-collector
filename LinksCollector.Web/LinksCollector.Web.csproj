@@ -25,6 +25,7 @@
   <ItemGroup>
     <None Remove="ClientApp\app\models\collect-links-result.ts" />
     <None Remove="ClientApp\app\models\link.ts" />
+    <None Remove="ClientApp\app\models\Request.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,7 @@
     <TypeScriptCompile Include="ClientApp\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\collect-links-result.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\link.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\request.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\links-collector.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\request.service.ts" />
   </ItemGroup>

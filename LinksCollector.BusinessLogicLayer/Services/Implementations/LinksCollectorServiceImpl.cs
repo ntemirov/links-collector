@@ -5,14 +5,32 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+using LinksCollector.DataAccessLayer.DataModels;
 using LinksCollector.BusinessLogicLayer.DomainModel;
+using LinksCollector.DataAccessLayer.Repositories;
+using LinksCollector.DataAccessLayer.Uow;
 
 namespace LinksCollector.BusinessLogicLayer.Services.Implementations
 {
     public class LinksCollectorServiceImpl : ILinksCollectorService
     {
+        public LinksCollectorServiceImpl(IRequestRepository requestRepository, IUnitOfWork uow)
+        {
+            _requestRepository = requestRepository;
+            _uow = uow;
+        }
+
         public async Task<CollectLinksResult> CollectLinks(String url)
         {
+            var request = new RequestDataModel
+            {
+                Url = url,
+                RequestDate = DateTime.Now
+            };
+
+            _requestRepository.Add(request);
+            await _uow.Commit();
+
             var hc = new HttpClient();
             try
             {
@@ -34,13 +52,25 @@ namespace LinksCollector.BusinessLogicLayer.Services.Implementations
                     {
                         return new Link
                         {
+                            RequestId = request.Id,
                             Text = node.InnerText,
                             Url = node.Attributes.FirstOrDefault(attr => attr.Name == "href").Value
                         };
                     });
 
-                    return new CollectLinksResult{
-                        Data = links,
+                    var groupedLinks = links.GroupBy(link => link.Url).Select(lnks =>
+                    {
+                        lnks.ElementAt(0).Count = lnks.Count();
+                        return lnks.ElementAt(0);
+                    });
+
+                    request.HyperlinksCount = links.Count();
+                    _requestRepository.Update(request);
+                    var x = await _uow.Commit();
+
+                    return new CollectLinksResult
+                    {
+                        Data = groupedLinks,
                         Error = null
                     };
                 }
@@ -54,5 +84,8 @@ namespace LinksCollector.BusinessLogicLayer.Services.Implementations
                 };
             }
         }
+
+        private readonly IRequestRepository _requestRepository;
+        private readonly IUnitOfWork _uow;
     }
 }

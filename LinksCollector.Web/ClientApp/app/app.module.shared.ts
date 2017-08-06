@@ -17,9 +17,11 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CollectorComponent } from './components/collector/collector.component';
 
 import { LinksCollectorService } from './services/links-collector.service';
+import { RequestService } from './services/request.service';
 
 const APP_PROVIDERS = [
-    LinksCollectorService
+    LinksCollectorService,
+    RequestService
 ];
 
 @NgModule({

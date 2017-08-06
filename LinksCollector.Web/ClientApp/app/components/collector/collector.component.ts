@@ -2,6 +2,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
 import { LinksCollectorService } from "../../services/links-collector.service";
+import { RequestService } from "../../services/request.service";
 import { CollectLinksResult } from "../../models/collect-links-result";
 import { Link } from "../../models/link";
 
@@ -17,7 +18,8 @@ export class CollectorComponent {
     protected getButtonPromice;
 
     constructor(private fb: FormBuilder,
-                private linksCollectorService: LinksCollectorService) {
+        private linksCollectorService: LinksCollectorService,
+        private requestService: RequestService) {
         this.createCollectorForm();
     }
 
@@ -30,9 +32,17 @@ export class CollectorComponent {
                 this.result = result;
                 let span = performance.now() - start;
 
-                // Update request execution time
+                // Set request execution time
+                this.requestService.setProcessingTime({
+                    id: result.data[0].requestId,
+                    requestProcessingTime: span,
+                    hyperlinksCount: 0,
+                    requestDate: new Date(),
+                    url: null
+                });
             })
             .catch(err => {
+                // TODO: Add unexpected error handling
                 console.log(err);
             });
     }

@@ -6,3 +6,7 @@
     color: #ff0000;
     font-size: small;
 }
+
+.has-error {
+    color: #ff0000;
+}

@@ -5,10 +5,6 @@ namespace LinksCollector.DataAccessLayer.DataModels
     public class RequestDataModel: IBaseDataModel
     {
         public Int64 Id { get; set; }
-        
-        public DateTimeOffset CreatedAt { get; set; }
-        
-        public DateTimeOffset? UpdatedAt { get; set; }
 
         /// <summary>
         /// The request url
@@ -28,6 +24,6 @@ namespace LinksCollector.DataAccessLayer.DataModels
         /// <summary>
         /// The request processing time
         /// </summary>
-        public TimeSpan RequestProcessingTime { get; set; }
+        public Double RequestProcessingTime { get; set; }
     }
 }

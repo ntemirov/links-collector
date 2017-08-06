@@ -11,7 +11,7 @@ using System;
 namespace LinksCollector.DataAccessLayer.Migrations
 {
     [DbContext(typeof(LinksCollectorDbContext))]
-    [Migration("20170803190344_Initial")]
+    [Migration("20170806051351_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,17 +26,11 @@ namespace LinksCollector.DataAccessLayer.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("GetUtcDate()");
-
                     b.Property<int>("HyperlinksCount");
 
                     b.Property<DateTimeOffset>("RequestDate");
 
-                    b.Property<TimeSpan>("RequestProcessingTime");
-
-                    b.Property<DateTimeOffset?>("UpdatedAt");
+                    b.Property<double>("RequestProcessingTime");
 
                     b.Property<string>("Url")
                         .IsRequired()

@@ -5,6 +5,11 @@ namespace LinksCollector.BusinessLogicLayer.DomainModel
     public class Link
     {
         /// <summary>
+        /// The request id
+        /// </summary>
+        public Int64 RequestId { get; set; }
+
+        /// <summary>
         /// The link text
         /// </summary>
         public String Text { get; set; }
