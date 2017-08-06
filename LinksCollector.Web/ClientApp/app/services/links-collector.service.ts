@@ -1,20 +1,20 @@
-﻿import { Injectable } from "@angular/core";
-import { Link } from "../models/link";
+﻿import { Injectable, Inject } from "@angular/core";
+import { CollectLinksResult } from "../models/collect-links-result";
 import { Http } from "@angular/http";
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class CollectorService {
+export class LinksCollectorService {
     private urls = {
-        getLinksUrl: 'LinksCollector/GetLinks'
+        getLinksUrl: '/api/LinksCollector/GetLinks?url='
     }
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, @Inject('ORIGIN_URL') private originUrl: string) { }
 
-    public getLinks(url: string): Promise<Link[]> {
-        return this.http.get(this.urls.getLinksUrl, url)
-            .toPromise()
-            .then(response => response.json().data as Link[])
-            .catch();
+    public getLinks(url: string): Promise<CollectLinksResult> {
+        return this.http.get(`${this.originUrl}${this.urls.getLinksUrl}${url}`)
+            .map(res => res.json() as CollectLinksResult)
+            .toPromise();
     }
 }

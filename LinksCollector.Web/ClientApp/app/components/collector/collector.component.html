@@ -1,30 +1,46 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h1>Collector</h1>
-        </div>
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Collector</h1>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <form [formGroup]="collector" novalidate>
-                <div class="form-group">
-                    <label class="form-inline url">
-                        Url:
-                        <input class="form-control" formControlName="url">
-                    </label> &nbsp;
-                    <button type="submit" (click)="getLinks($event)" [promiseBtn]="getButtonPromice" [disabled]="!collector.valid" class="btn">
-                        Get links
-                    </button>
-                    <div *ngIf="collectorFormErrors.url" class="validate-danger text-left">
-                        {{ collectorFormErrors.url }}
-                    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <form [formGroup]="collector" novalidate>
+            <div class="form-group">
+                <label class="form-inline url">
+                    Url:
+                    <input class="form-control" formControlName="url">
+                </label> &nbsp;
+                <button type="submit" (click)="getLinks($event)" [promiseBtn]="getButtonPromice" [disabled]="!collector.valid" class="btn">
+                    Get links
+                </button>
+                <div *ngIf="collectorFormErrors.url" class="validate-danger text-left">
+                    {{ collectorFormErrors.url }}
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-
-        </div>
+</div>
+<div class="row">
+    <div *ngIf="result" class="col-sm-12">
+        <p *ngIf="result.error" class="has-error">result.error</p>
+        <table class='table' *ngIf="result.data">
+            <thead>
+                <tr>
+                    <th>Link</th>
+                    <th>Url</th>
+                    <th>Text</th>
+                    <th>Number of repetitions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let link of result.data">
+                    <td><a href="{{ link.url }}">{{ link.text }}</a></td>
+                    <td>{{ link.url }}</td>
+                    <td>{{ link.text }}</td>
+                    <td>{{ link.count }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

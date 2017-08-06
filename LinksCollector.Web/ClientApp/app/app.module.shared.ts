@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +16,12 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CollectorComponent } from './components/collector/collector.component';
 
+import { LinksCollectorService } from './services/links-collector.service';
+
+const APP_PROVIDERS = [
+    LinksCollectorService
+];
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,7 +32,6 @@ import { CollectorComponent } from './components/collector/collector.component';
     ],
     imports: [
         AppRoutingModule,
-        BrowserAnimationsModule,
         CommonModule,
         HttpModule,
         FormsModule,
@@ -35,6 +39,10 @@ import { CollectorComponent } from './components/collector/collector.component';
         InfiniteScrollModule,
         Angular2PromiseButtonModule.forRoot(),
         ToastModule.forRoot()
+    ],
+
+    providers: [
+        APP_PROVIDERS
     ]
 })
 export class AppModuleShared {

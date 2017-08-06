@@ -1,7 +1,9 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
+import { LinksCollectorService } from "../../services/links-collector.service";
+import { CollectLinksResult } from "../../models/collect-links-result";
+import { Link } from "../../models/link";
 
 @Component({
     selector: 'collector',
@@ -11,18 +13,28 @@ import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
 export class CollectorComponent {
     protected collector: FormGroup;
 
+    protected result: CollectLinksResult;
     protected getButtonPromice;
 
-    constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private fb: FormBuilder) {
-        this.toastr.setRootViewContainerRef(vcr);
+    constructor(private fb: FormBuilder,
+                private linksCollectorService: LinksCollectorService) {
         this.createCollectorForm();
     }
 
     protected getLinks(event) {
-        this.getButtonPromice = new Promise((resolve, reject) => {
-            this.toastr.success('You are awesome!', 'Success!');
-            setTimeout(resolve, 2000);
-        });
+        this.result = null;
+        let start = performance.now();
+
+        this.getButtonPromice = this.linksCollectorService.getLinks(this.collector.controls['url'].value)
+            .then(result => {
+                this.result = result;
+                let span = performance.now() - start;
+
+                // Update request execution time
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     protected createCollectorForm() {

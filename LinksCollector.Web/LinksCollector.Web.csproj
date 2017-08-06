@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\models\collect-links-result.ts" />
     <None Remove="ClientApp\app\models\link.ts" />
   </ItemGroup>
 
@@ -32,8 +33,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\collect-links-result.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\link.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\links-collector.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\request.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

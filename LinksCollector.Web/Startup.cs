@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -10,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
 using LinksCollector.DataAccessLayer.EF;
+using LinksCollector.BusinessLogicLayer.Services;
 
 namespace LinksCollector_Web
 {
@@ -28,6 +26,18 @@ namespace LinksCollector_Web
             // Add framework services.
             services.AddDbContext<LinksCollectorDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.Scan(scan => scan
+                .FromAssemblies(typeof(LinksCollectorDbContext).Assembly)
+                .AddClasses(classes => classes.Where(cls => cls.Name.EndsWith("Impl")))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
+
+            services.Scan(scan => scan
+                .FromAssemblies(typeof(IRequestService).Assembly)
+                .AddClasses(classes => classes.Where(cls => cls.Name.EndsWith("Impl")))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
 
             services.AddMvc();
         }
