@@ -8,3 +8,10 @@
         <p>Test ASP.NET Core 2.0 / Angular 4 application</p>
     </div>
 </div>
+
+<div>
+    <h1>{{ 'SOME_WORD' | translate }}</h1>
+    <h1>{{ 'HOME' | translate }}</h1>
+    <button class="btn btn-default" (click)="setLanguage('en')">English</button>
+    <button class="btn btn-default" (click)="setLanguage('ru')">Russian</button>
+</div>
