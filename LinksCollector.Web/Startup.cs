@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 using LinksCollector.DataAccessLayer.EF;
 using LinksCollector.BusinessLogicLayer.Services;
+using System.Reflection;
+using System.Collections.Generic;
 
 namespace LinksCollector_Web
 {
@@ -27,14 +29,12 @@ namespace LinksCollector_Web
             services.AddDbContext<LinksCollectorDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.Scan(scan => scan
-                .FromAssemblies(typeof(LinksCollectorDbContext).Assembly)
-                .AddClasses(classes => classes.Where(cls => cls.Name.EndsWith("Impl")))
-                .AsImplementedInterfaces()
-                .WithTransientLifetime());
+            var entryAssembly = Assembly.GetEntryAssembly();
+            var referencedAssemblies = entryAssembly.GetReferencedAssemblies().Select(Assembly.Load);
+            var assemblies = new List<Assembly> { entryAssembly }.Concat(referencedAssemblies);
 
             services.Scan(scan => scan
-                .FromAssemblies(typeof(IRequestService).Assembly)
+                .FromAssemblies(assemblies)
                 .AddClasses(classes => classes.Where(cls => cls.Name.EndsWith("Impl")))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
